@@ -36,7 +36,7 @@ Before starting this exercise, ensure you have:
 
 Microsoft Foundry uses projects to organize models, resources, data, and other assets used to develop an AI solution.
 
-1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the Foundry logo at the top left to navigate to the home page.
+1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` to start building; signing in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
 
 1. If it is not already enabled, in the tool bar the top of the page, enable the **New Foundry** option. Then, if prompted, create a new project with a unique name; expanding the **Advanced options** area to specify the following settings for your project:
     * **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
@@ -44,8 +44,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
     * **Resource group**: *Create or select a resource group*
     * **Region**: Select any available region
 
-1. Select **Create**. Wait for your project to be created.
-1. On the home page for your project, note that the API key, project endpoint, and Azure OpenAI endpoint are displayed here.
+1. Wait for your project to be created. Then, on the home page for your project, note that the API key, project endpoint, and Azure OpenAI endpoint are displayed here.
 
     > **TIP**: You're going to need the Azure OpenAI endpoint later!
 
@@ -53,8 +52,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 You'll need a model that can process image-based input.
 
-1. Now you're ready to **Start building**. Select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
-
+1. Now you're ready to explore models. On the **Discover** page, select the **Models** tab to view the Microsoft Foundry model catalog.
 1. Search for and deploy the `gpt-4.1` model using the default settings. Deployment may take a minute or so.
 
     > **Tip**: Model deployments are subject to regional quotas. If you don't have enough quota to deploy the model in your project's region, you can use a different model - such as gpt-4.1-mini, or gpt-4o. Alternatively, you can create a new project in a different region.
@@ -74,8 +72,6 @@ Now you can test your model deployment with an image-based prompt in the chat pl
 1. In the main chat session panel, under the chat input box, use the attach button (**&#128206;**) to upload the *mango.jpeg* image file, and then add the text `What desserts could I make with this fruit?` and submit the prompt.
 
     ![Screenshot of the chat playground page.](../media/chat-playground-image-new.png)
-
-    > **NOTE**: If the error *ERR_BAD_REQUEST: The provided data does not match the expected schema* is returned, try switching to the *Classic* portal by de-selecting the **New Foundry** option. In the classic portal, open the **Chat playground** in the **Playgrounds** page.
 
 1. Review the response, which should hopefully provide relevant guidance for desserts you can make using a mango.
 
@@ -97,8 +93,6 @@ The initial application files you'll need to develop the translation application
 
     > **Tip**: If you are prompted to install dependencies, you can install the ones in the *requirements.txt* file in the */labfiles/gen-ai-vision/python* folder; but it's OK if you don't - we'll install them later!
 
-    > **Tip**: If you prefer to use the terminal, you can create your **Venv** environment with `python -m venv labenv`, then activate it with `\labenv\Scripts\activate`.
-
 ### Prepare the application configuration
 
 1. After the repo has been cloned, open the folder in VS Code (**File > Open Folder**), and navigate to the `/labfiles/gen-ai-vision/python` folder.
@@ -112,7 +106,7 @@ The initial application files you'll need to develop the translation application
 
 1. In the **Explorer** pane, in the **python** folder, select the **.env** file to open it. Then update the configuration values to include the **Azure OpenAI endpoint** for your Foundry resource, and the model deployment name for the generative AI model you deployed.
 
-    > **Important**:Be sure to add the `https://{foundry-resource-name}.openai.azure.com/openai/v1/` Azure openAI endpoint, <u>not</u> the project endpoint!
+    > **Important**: Be sure to add the `https://{foundry-resource-name}.openai.azure.com/openai/v1/` Azure OpenAI endpoint, <u>not</u> the project endpoint!
 
     Save the modified configuration file.
 
