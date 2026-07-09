@@ -2,6 +2,11 @@ import os
 import json
 
 # Add references
+from dotenv import load_dotenv
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+from openai import OpenAI
+import requests
+import base64
 
 
 def main(): 
@@ -16,7 +21,24 @@ def main():
         endpoint = os.getenv("ENDPOINT")
         model_deployment =  os.getenv("MODEL_DEPLOYMENT")
         
-        # Initialize the client
+        # # Initialize the client
+        # token_provider = get_bearer_token_provider(
+        #     DefaultAzureCredential(exclude_environment_credential=True,
+        #         exclude_managed_identity_credential=True), 
+        #     "https://cognitiveservices.azure.com/.default"
+        # )
+    
+        # client = OpenAI(
+        #     base_url=endpoint,
+        #     api_key=token_provider(),
+        # )
+        
+        # Initialize the token provider with the correct AI Services scope
+        token_provider = get_bearer_token_provider(
+            DefaultAzureCredential(exclude_environment_credential=True,
+                exclude_managed_identity_credential=True), 
+            "https://ai.azure.com/.default"
+        )
         
         
 
@@ -32,7 +54,36 @@ def main():
                 print("Please enter a prompt.")
                 continue
             
-            # Generate an image
+            # # Generate an image
+            # img = client.images.generate(
+            #     model=model_deployment,
+            #     prompt=input_text,
+            #     n=1
+            # )
+
+            # json_response = json.loads(img.model_dump_json())
+            
+            # Generate an image using REST API
+            print("Generating image...")
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token_provider()}"
+            }
+            
+            payload = {
+                "prompt": input_text,
+                "model": model_deployment,
+                "width": 1024,
+                "height": 1024,
+                "n": 1
+            }
+            
+            response = requests.post(endpoint, headers=headers, json=payload)
+            response.raise_for_status() 
+            
+            json_response = response.json()
+            image_data = json_response["data"][0].get("b64_json")
+            image_data_in_bytes = base64.b64decode(image_data)
             
 
             # save the image
