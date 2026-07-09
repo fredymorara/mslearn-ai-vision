@@ -1,12 +1,12 @@
-# Azure AI Computer Vision Portfolio
+# Azure AI Computer Vision Projects
 
-Welcome to my Azure AI Computer Vision repository! This project serves as a portfolio of my hands-on experience developing advanced computer vision and generative AI solutions using **Microsoft Azure AI Services (Foundry)** and **Azure OpenAI**.
+Welcome to my Azure AI Computer Vision repository! This repository is a collection of projects demonstrating my hands-on experience developing advanced computer vision and generative AI solutions using **Microsoft Azure AI Services (Foundry)** and **Azure OpenAI**.
 
-This repository demonstrates my ability to integrate multi-modal AI models, implement robust passwordless authentication, handle advanced API patterns (like asynchronous polling), and adapt to architectural challenges (such as regional model availability).
+These labs showcase my ability to integrate multi-modal AI models, implement robust passwordless authentication, handle advanced API patterns (like asynchronous polling), and adapt to architectural challenges (such as regional model availability).
 
 ---
 
-## 🚀 Projects & Capabilities Showcased
+## 🚀 Projects Showcased
 
 ### 1. Generative AI Multi-Modal Chat (`gen-ai-vision`)
 Built an interactive Python chat application capable of analyzing images and text simultaneously. 
